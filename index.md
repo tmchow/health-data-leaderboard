@@ -43,18 +43,20 @@ title: Health Data Benchmark Leaderboard
 
 ## Top 10 Snapshot (All-Up)
 
-| Rank | Text Model | Vision Model | Strategy | Status Acc | Measured Recall | Not Reported Acc | Core Value Acc | Ranking Cost | Ranking Runtime | Tested |
-|---|---|---|---|---:|---:|---:|---:|---:|---:|---|
-| 1 | `anthropic/claude-sonnet-4.6` | `anthropic/claude-sonnet-4.6` | `vision_only` | 98.72% | — | — | 100.00% | $0.73 | 217.2s | 2026-02-20 |
-| 2 | `openai/gpt-5.2` | `openai/gpt-5.2` | `vision_only` | 98.72% | — | — | 100.00% | $0.77 | 349.3s | 2026-02-20 |
-| 3 | `google/gemini-3.1-pro-preview` | `google/gemini-3.1-pro-preview` | `text_only` | 98.72% | — | — | 100.00% | $0.96 | 357.9s | 2026-02-20 |
-| 4 | `anthropic/claude-opus-4.6` | `anthropic/claude-opus-4.6` | `vision_only` | 98.72% | — | — | 100.00% | $1.21 | 210.0s | 2026-02-20 |
-| 5 | `anthropic/claude-opus-4.6` | `anthropic/claude-opus-4.6` | `text_only` | 98.72% | — | — | 100.00% | $1.24 | 221.2s | 2026-02-20 |
-| 6 | `anthropic/claude-sonnet-4.6` | `anthropic/claude-sonnet-4.6` | `hybrid` | 98.72% | — | — | 100.00% | $1.54 | 438.9s | 2026-02-20 |
-| 7 | `anthropic/claude-opus-4.6` | `anthropic/claude-opus-4.6` | `hybrid` | 98.72% | — | — | 100.00% | $2.45 | 431.2s | 2026-02-20 |
-| 8 | `x-ai/grok-4.1-fast` | `x-ai/grok-4.1-fast` | `text_only` | 98.72% | — | — | 96.88% | $0.03 | 253.8s | 2026-02-20 |
-| 9 | `x-ai/grok-4.1-fast` | `x-ai/grok-4.1-fast` | `hybrid` | 98.72% | — | — | 96.88% | $0.05 | 418.2s | 2026-02-20 |
-| 10 | `anthropic/claude-sonnet-4.6` | `anthropic/claude-sonnet-4.6` | `text_only` | 98.72% | — | — | 93.75% | $0.81 | 221.7s | 2026-02-20 |
+Model uses the active strategy modality (`text_only` -> text model, `vision_only` -> vision model). Hybrid rows label both as `(t)` and `(v)`.
+
+| Rank | Model | Strategy | Status Acc | Measured Recall | Not Reported Acc | Core Value Acc | Ranking Cost | Ranking Runtime | Tested |
+|---|---|---|---:|---:|---:|---:|---:|---:|---|
+| 1 | `anthropic/claude-sonnet-4.6` | `vision_only` | 98.72% | — | — | 100.00% | $0.73 | 217.2s | 2026-02-20 |
+| 2 | `openai/gpt-5.2` | `vision_only` | 98.72% | — | — | 100.00% | $0.77 | 349.3s | 2026-02-20 |
+| 3 | `google/gemini-3.1-pro-preview` | `text_only` | 98.72% | — | — | 100.00% | $0.96 | 357.9s | 2026-02-20 |
+| 4 | `anthropic/claude-opus-4.6` | `vision_only` | 98.72% | — | — | 100.00% | $1.21 | 210.0s | 2026-02-20 |
+| 5 | `anthropic/claude-opus-4.6` | `text_only` | 98.72% | — | — | 100.00% | $1.24 | 221.2s | 2026-02-20 |
+| 6 | `anthropic/claude-sonnet-4.6 (t)`<br>`anthropic/claude-sonnet-4.6 (v)` | `hybrid` | 98.72% | — | — | 100.00% | $1.54 | 438.9s | 2026-02-20 |
+| 7 | `anthropic/claude-opus-4.6 (t)`<br>`anthropic/claude-opus-4.6 (v)` | `hybrid` | 98.72% | — | — | 100.00% | $2.45 | 431.2s | 2026-02-20 |
+| 8 | `x-ai/grok-4.1-fast` | `text_only` | 98.72% | — | — | 96.88% | $0.03 | 253.8s | 2026-02-20 |
+| 9 | `x-ai/grok-4.1-fast (t)`<br>`x-ai/grok-4.1-fast (v)` | `hybrid` | 98.72% | — | — | 96.88% | $0.05 | 418.2s | 2026-02-20 |
+| 10 | `anthropic/claude-sonnet-4.6` | `text_only` | 98.72% | — | — | 93.75% | $0.81 | 221.7s | 2026-02-20 |
 
 ## Top 10 Snapshot (Text-Only)
 
