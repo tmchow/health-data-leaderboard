@@ -5,7 +5,7 @@ title: Health Data Benchmark Leaderboard
 
 # Benchmark Leaderboard
 
-- Last updated: 2026-02-22T01:41:12Z
+- Last updated: 2026-02-22T02:09:26Z
 - Benchmark version: `3.0.0` (major `3`)
 - Runs included: `20260222T002221+0000`, `20260221T232400+0000`, `20260221T180302+0000`, `20260220T234636+0000`
 - Policy: rank by `accuracy > cost > runtime`
@@ -25,11 +25,8 @@ title: Health Data Benchmark Leaderboard
 
 ## Leaderboard Insights
 
-- `Gemini 3 Pro Preview` on `text_only` is still the default because it matches the top classification accuracy tier (98.72% / 77 of 78) and top core value accuracy (100.00%) while remaining cheaper than the nearest top-tier alternatives like `Claude Sonnet 4.6` vision-only ($0.72) and `Claude Opus 4.6` text-only ($1.25).
-- The best hybrid row (`Gemini 3 Pro Preview` text + `Gemini 3 Flash Preview` vision) does not improve accuracy versus the default (also 98.72% / 77 of 78), but increases effective cost from $0.60 to $0.70 and runtime from 325.5s to 478.1s; defaulting to single-modality remains the better baseline.
-- `Grok 4.1 Fast` text-only is the strongest cost-down option at the top status tier ($0.03 with 98.72% / 77 of 78), but core value accuracy is 93.75% versus 100.00% for the leading rows, so it is better treated as a budget fallback than a primary extraction default.
-- `Kimi K2.5` vision-only is currently not decision-grade because the run is partial (`Run Status: Partial (1/3 docs)`) and excluded from ranking; retest that target before making any vision-side recommendation for that model.
-- Freshness is good: the active ranked entries are all from runs between 2026-02-20 and 2026-02-22, so current recommendations are based on recent data rather than stale historical runs.
+<!-- Regenerate with LLM judgment after reviewing tables below. -->
+<!-- Key questions: Who improved? Who dropped? Any new cost-down options at equivalent accuracy? -->
 
 ## Metric Definitions
 
@@ -143,51 +140,47 @@ One row per active-modality model (`text_only` dedupes by text model, `vision_on
 
 ## Full Ranked Table — Text-Only
 
-Vision Model column = configured hybrid pair (unused for text extraction).
-
-| Rank | Text Model | Vision Model | Strategy | Run Status | Status Acc | Measured Recall | Not Reported Acc | Core Value Acc | Ranking Cost | Ranking Runtime | Tested |
-|---|---|---|---|---|---:|---:|---:|---:|---:|---:|---|
-| 1 | `google/gemini-3-pro-preview` | `google/gemini-3-pro-preview` | `text_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $0.60 | 325.5s | 2026-02-21 |
-| 2 | `google/gemini-3-pro-preview` | `google/gemini-3-flash-preview` | `text_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $0.64 | 363.6s | 2026-02-21 |
-| 3 | `anthropic/claude-opus-4.6` | `anthropic/claude-opus-4.6` | `text_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $1.25 | 364.7s | 2026-02-22 |
-| 4 | `x-ai/grok-4.1-fast` | `x-ai/grok-4.1-fast` | `text_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 93.75% | $0.03 | 322.1s | 2026-02-22 |
-| 5 | `anthropic/claude-sonnet-4.6` | `anthropic/claude-sonnet-4.6` | `text_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 93.75% | $0.81 | 398.5s | 2026-02-22 |
-| 6 | `z-ai/glm-4.7` | `google/gemini-3-flash-preview` | `text_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.10 | 1723.1s | 2026-02-21 |
-| 7 | `z-ai/glm-5` | `google/gemini-3-flash-preview` | `text_only` | Complete | 97.44% (76/78) | 96.08% (49/51) | 100.00% (27/27) | 100.00% | $0.15 | 548.0s | 2026-02-21 |
-| 8 | `openai/gpt-5.2` | `openai/gpt-5.2` | `text_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.68 | 532.8s | 2026-02-22 |
-| 9 | `google/gemini-3.1-pro-preview` | `google/gemini-3.1-pro-preview` | `text_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $1.01 | 598.1s | 2026-02-22 |
-| 10 | `z-ai/glm-5` | `google/gemini-3-pro-preview` | `text_only` | Complete | 94.87% (74/78) | 94.12% (48/51) | 96.30% (26/27) | 100.00% | $0.13 | 1573.6s | 2026-02-21 |
-| 11 | `moonshotai/kimi-k2.5` | `moonshotai/kimi-k2.5` | `text_only` | Complete | 94.87% (74/78) | 94.12% (48/51) | 96.30% (26/27) | 96.88% | $0.21 | 1075.3s | 2026-02-22 |
-| 12 | `google/gemini-3-flash-preview` | `google/gemini-3-pro-preview` | `text_only` | Complete | 93.59% (73/78) | 90.20% (46/51) | 100.00% (27/27) | 100.00% | $0.11 | 182.0s | 2026-02-21 |
-| 13 | `google/gemini-3-flash-preview` | `google/gemini-3-flash-preview` | `text_only` | Complete | 93.59% (73/78) | 90.20% (46/51) | 100.00% (27/27) | 100.00% | $0.12 | 176.8s | 2026-02-21 |
-| 14 | `qwen/qwen3.5-plus-02-15` | `qwen/qwen3.5-plus-02-15` | `text_only` | Complete | 88.46% (69/78) | 84.31% (43/51) | 96.30% (26/27) | 96.88% | $0.08 | 453.2s | 2026-02-22 |
-| 15 | `qwen/qwen3.5-397b-a17b` | `qwen/qwen3.5-397b-a17b` | `text_only` | Complete | 83.33% (65/78) | 74.51% (38/51) | 100.00% (27/27) | 100.00% | $0.06 | 344.9s | 2026-02-22 |
-| 16 | `z-ai/glm-4.7` | `google/gemini-3-pro-preview` | `text_only` | Complete | 64.10% (50/78) | 45.10% (23/51) | 100.00% (27/27) | 50.00% | $0.09 | 1376.3s | 2026-02-21 |
+| Rank | Text Model | Run Status | Status Acc | Measured Recall | Not Reported Acc | Core Value Acc | Ranking Cost | Ranking Runtime | Tested |
+|---|---|---|---:|---:|---:|---:|---:|---:|---|
+| 1 | `google/gemini-3-pro-preview` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $0.60 | 325.5s | 2026-02-21 |
+| 2 | `google/gemini-3-pro-preview` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $0.64 | 363.6s | 2026-02-21 |
+| 3 | `anthropic/claude-opus-4.6` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $1.25 | 364.7s | 2026-02-22 |
+| 4 | `x-ai/grok-4.1-fast` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 93.75% | $0.03 | 322.1s | 2026-02-22 |
+| 5 | `anthropic/claude-sonnet-4.6` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 93.75% | $0.81 | 398.5s | 2026-02-22 |
+| 6 | `z-ai/glm-4.7` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.10 | 1723.1s | 2026-02-21 |
+| 7 | `z-ai/glm-5` | Complete | 97.44% (76/78) | 96.08% (49/51) | 100.00% (27/27) | 100.00% | $0.15 | 548.0s | 2026-02-21 |
+| 8 | `openai/gpt-5.2` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.68 | 532.8s | 2026-02-22 |
+| 9 | `google/gemini-3.1-pro-preview` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $1.01 | 598.1s | 2026-02-22 |
+| 10 | `z-ai/glm-5` | Complete | 94.87% (74/78) | 94.12% (48/51) | 96.30% (26/27) | 100.00% | $0.13 | 1573.6s | 2026-02-21 |
+| 11 | `moonshotai/kimi-k2.5` | Complete | 94.87% (74/78) | 94.12% (48/51) | 96.30% (26/27) | 96.88% | $0.21 | 1075.3s | 2026-02-22 |
+| 12 | `google/gemini-3-flash-preview` | Complete | 93.59% (73/78) | 90.20% (46/51) | 100.00% (27/27) | 100.00% | $0.11 | 182.0s | 2026-02-21 |
+| 13 | `google/gemini-3-flash-preview` | Complete | 93.59% (73/78) | 90.20% (46/51) | 100.00% (27/27) | 100.00% | $0.12 | 176.8s | 2026-02-21 |
+| 14 | `qwen/qwen3.5-plus-02-15` | Complete | 88.46% (69/78) | 84.31% (43/51) | 96.30% (26/27) | 96.88% | $0.08 | 453.2s | 2026-02-22 |
+| 15 | `qwen/qwen3.5-397b-a17b` | Complete | 83.33% (65/78) | 74.51% (38/51) | 100.00% (27/27) | 100.00% | $0.06 | 344.9s | 2026-02-22 |
+| 16 | `z-ai/glm-4.7` | Complete | 64.10% (50/78) | 45.10% (23/51) | 100.00% (27/27) | 50.00% | $0.09 | 1376.3s | 2026-02-21 |
 
 ---
 
 ## Full Ranked Table — Vision-Only
 
-Text Model column = configured hybrid pair (unused for vision extraction).
-
-| Rank | Text Model | Vision Model | Strategy | Run Status | Status Acc | Measured Recall | Not Reported Acc | Core Value Acc | Ranking Cost | Ranking Runtime | Tested |
-|---|---|---|---|---|---:|---:|---:|---:|---:|---:|---|
-| 1 | `anthropic/claude-sonnet-4.6` | `anthropic/claude-sonnet-4.6` | `vision_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $0.72 | 302.5s | 2026-02-22 |
-| 2 | `anthropic/claude-opus-4.6` | `anthropic/claude-opus-4.6` | `vision_only` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $1.20 | 353.4s | 2026-02-22 |
-| 3 | `z-ai/glm-4.7` | `google/gemini-3-pro-preview` | `vision_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.66 | 383.4s | 2026-02-21 |
-| 4 | `z-ai/glm-5` | `google/gemini-3-pro-preview` | `vision_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.69 | 463.5s | 2026-02-21 |
-| 5 | `google/gemini-3-flash-preview` | `google/gemini-3-pro-preview` | `vision_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.76 | 437.8s | 2026-02-21 |
-| 6 | `google/gemini-3-pro-preview` | `google/gemini-3-pro-preview` | `vision_only` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.78 | 529.1s | 2026-02-21 |
-| 7 | `openai/gpt-5.2` | `openai/gpt-5.2` | `vision_only` | Complete | 88.46% (69/78) | 84.31% (43/51) | 96.30% (26/27) | 100.00% | $0.63 | 481.0s | 2026-02-22 |
-| 8 | `google/gemini-3.1-pro-preview` | `google/gemini-3.1-pro-preview` | `vision_only` | Complete | 87.18% (68/78) | 80.39% (41/51) | 100.00% (27/27) | 100.00% | $0.59 | 353.5s | 2026-02-22 |
-| 9 | `google/gemini-3-pro-preview` | `google/gemini-3-flash-preview` | `vision_only` | Complete | 80.77% (63/78) | 70.59% (36/51) | 100.00% (27/27) | 100.00% | $0.06 | 114.5s | 2026-02-21 |
-| 10 | `z-ai/glm-5` | `google/gemini-3-flash-preview` | `vision_only` | Complete | 79.49% (62/78) | 68.63% (35/51) | 100.00% (27/27) | 100.00% | $0.06 | 99.7s | 2026-02-21 |
-| 11 | `google/gemini-3-flash-preview` | `google/gemini-3-flash-preview` | `vision_only` | Complete | 79.49% (62/78) | 68.63% (35/51) | 100.00% (27/27) | 100.00% | $0.06 | 100.0s | 2026-02-21 |
-| 12 | `z-ai/glm-4.7` | `google/gemini-3-flash-preview` | `vision_only` | Complete | 78.21% (61/78) | 66.67% (34/51) | 100.00% (27/27) | 100.00% | $0.06 | 91.3s | 2026-02-21 |
-| 13 | `qwen/qwen3.5-397b-a17b` | `qwen/qwen3.5-397b-a17b` | `vision_only` | Complete | 76.92% (60/78) | 64.71% (33/51) | 100.00% (27/27) | 96.88% | $0.04 | 167.6s | 2026-02-22 |
-| 14 | `qwen/qwen3.5-plus-02-15` | `qwen/qwen3.5-plus-02-15` | `vision_only` | Complete | 75.64% (59/78) | 62.75% (32/51) | 100.00% (27/27) | 93.75% | $0.05 | 144.2s | 2026-02-22 |
-| 15 | `x-ai/grok-4.1-fast` | `x-ai/grok-4.1-fast` | `vision_only` | Complete | 43.59% | — | — | 6.25% | $0.02 | 164.4s | 2026-02-20 |
-| ✖ | `moonshotai/kimi-k2.5` | `moonshotai/kimi-k2.5` | `vision_only` | Partial (1/3 docs) | 57.69% (45/78) | 35.29% (18/51) | 100.00% (27/27) | 46.88% | $0.05 | 1549.8s | 2026-02-22 |
+| Rank | Vision Model | Run Status | Status Acc | Measured Recall | Not Reported Acc | Core Value Acc | Ranking Cost | Ranking Runtime | Tested |
+|---|---|---|---:|---:|---:|---:|---:|---:|---|
+| 1 | `anthropic/claude-sonnet-4.6` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $0.72 | 302.5s | 2026-02-22 |
+| 2 | `anthropic/claude-opus-4.6` | Complete | 98.72% (77/78) | 98.04% (50/51) | 100.00% (27/27) | 100.00% | $1.20 | 353.4s | 2026-02-22 |
+| 3 | `google/gemini-3-pro-preview` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.66 | 383.4s | 2026-02-21 |
+| 4 | `google/gemini-3-pro-preview` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.69 | 463.5s | 2026-02-21 |
+| 5 | `google/gemini-3-pro-preview` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.76 | 437.8s | 2026-02-21 |
+| 6 | `google/gemini-3-pro-preview` | Complete | 97.44% (76/78) | 98.04% (50/51) | 96.30% (26/27) | 100.00% | $0.78 | 529.1s | 2026-02-21 |
+| 7 | `openai/gpt-5.2` | Complete | 88.46% (69/78) | 84.31% (43/51) | 96.30% (26/27) | 100.00% | $0.63 | 481.0s | 2026-02-22 |
+| 8 | `google/gemini-3.1-pro-preview` | Complete | 87.18% (68/78) | 80.39% (41/51) | 100.00% (27/27) | 100.00% | $0.59 | 353.5s | 2026-02-22 |
+| 9 | `google/gemini-3-flash-preview` | Complete | 80.77% (63/78) | 70.59% (36/51) | 100.00% (27/27) | 100.00% | $0.06 | 114.5s | 2026-02-21 |
+| 10 | `google/gemini-3-flash-preview` | Complete | 79.49% (62/78) | 68.63% (35/51) | 100.00% (27/27) | 100.00% | $0.06 | 99.7s | 2026-02-21 |
+| 11 | `google/gemini-3-flash-preview` | Complete | 79.49% (62/78) | 68.63% (35/51) | 100.00% (27/27) | 100.00% | $0.06 | 100.0s | 2026-02-21 |
+| 12 | `google/gemini-3-flash-preview` | Complete | 78.21% (61/78) | 66.67% (34/51) | 100.00% (27/27) | 100.00% | $0.06 | 91.3s | 2026-02-21 |
+| 13 | `qwen/qwen3.5-397b-a17b` | Complete | 76.92% (60/78) | 64.71% (33/51) | 100.00% (27/27) | 96.88% | $0.04 | 167.6s | 2026-02-22 |
+| 14 | `qwen/qwen3.5-plus-02-15` | Complete | 75.64% (59/78) | 62.75% (32/51) | 100.00% (27/27) | 93.75% | $0.05 | 144.2s | 2026-02-22 |
+| 15 | `x-ai/grok-4.1-fast` | Complete | 43.59% | — | — | 6.25% | $0.02 | 164.4s | 2026-02-20 |
+| ✖ | `moonshotai/kimi-k2.5` | Partial (1/3 docs) | 57.69% (45/78) | 35.29% (18/51) | 100.00% (27/27) | 46.88% | $0.05 | 1549.8s | 2026-02-22 |
 
 ---
 
@@ -227,4 +220,4 @@ Text Model column = configured hybrid pair (unused for vision extraction).
 
 ---
 
-*Benchmark `v3.0.0` · 48 active entries · 4 run(s) · Generated 2026-02-22T01:41:12Z*
+*Benchmark `v3.0.0` · 48 active entries · 4 run(s) · Generated 2026-02-22T02:09:26Z*
