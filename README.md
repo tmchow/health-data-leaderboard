@@ -20,8 +20,11 @@
 
 ## Leaderboard Insights
 
-<!-- Regenerate with LLM judgment after reviewing tables below. -->
-<!-- Key questions: Who improved? Who dropped? Any new cost-down options at equivalent accuracy? -->
+- `Gemini 3 Pro Preview` on `text_only` is still the default because it matches the top classification accuracy tier (98.72% / 77 of 78) and top core value accuracy (100.00%) while remaining cheaper than the nearest top-tier alternatives like `Claude Sonnet 4.6` vision-only ($0.72) and `Claude Opus 4.6` text-only ($1.25).
+- The best hybrid row (`Gemini 3 Pro Preview` text + `Gemini 3 Flash Preview` vision) does not improve accuracy versus the default (also 98.72% / 77 of 78), but increases effective cost from $0.60 to $0.70 and runtime from 325.5s to 478.1s; defaulting to single-modality remains the better baseline.
+- `Grok 4.1 Fast` text-only is the strongest cost-down option at the top status tier ($0.03 with 98.72% / 77 of 78), but core value accuracy is 93.75% versus 100.00% for the leading rows, so it is better treated as a budget fallback than a primary extraction default.
+- `Kimi K2.5` vision-only is currently not decision-grade because the run is partial (`Run Status: Partial (1/3 docs)`) and excluded from ranking; retest that target before making any vision-side recommendation for that model.
+- Freshness is good: the active ranked entries are all from runs between 2026-02-20 and 2026-02-22, so current recommendations are based on recent data rather than stale historical runs.
 
 ## Metric Definitions
 
